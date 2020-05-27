@@ -1,0 +1,13 @@
+{
+  "version": "1.0.0",
+  "appName": "dvtweather",
+  "apiSettings": {
+    "headers": {
+      "Cache-Control": "no-cache",
+      "Content-Type": "application/json"
+    },
+    "timeout": 45000
+  },
+  "WeatherApiKey": "fe17906714b2c7d6069a98f9e3cd7c97",
+  "WeatherBaseURL": "https://api.openweathermap.org/data/2.5/"
+}
