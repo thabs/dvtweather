@@ -79,6 +79,8 @@ target 'dvtweather' do
 
   pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 
+  pod 'react-native-geolocation', :path => '../node_modules/@react-native-community/geolocation'
+
   target 'dvtweatherTests' do
     inherit! :complete
     # Pods for testing

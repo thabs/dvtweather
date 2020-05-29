@@ -1,42 +1,29 @@
 import React, {useState, useContext, useEffect} from 'react';
 import {View, ScrollView, ImageBackground, StyleSheet} from 'react-native';
-import {
-  Text,
-  Title,
-  ActivityIndicator,
-  Modal,
-  Portal,
-} from 'react-native-paper';
+import {Text, ActivityIndicator, Modal, Portal} from 'react-native-paper';
+import Geolocation from '@react-native-community/geolocation';
 //! Components
 import {TempData, ForecastData} from 'components';
 //! Context
 import {Context as WeatherContext} from './state/WeatherContext';
 
 const WeatherView = () => {
-  const latdemo = -26.097074;
-  const londemo = 28.116603;
   //! Context
   const {state, fetchLocationWeather, fetchLocationForecast} = useContext(
     WeatherContext,
   );
-  const {
-    loading,
-    error,
-    status,
-    statusColor,
-    statusImage,
-    temp,
-    date,
-    forecast,
-  } = state;
+  const {status, statusColor, statusImage, temp, date, forecast} = state;
   //! State
   const [timer, setTimer] = useState();
 
   useEffect(() => {
     if (!timer) {
       const tmr = setInterval(() => {
-        fetchLocationWeather({lat: latdemo, lon: londemo});
-        fetchLocationForecast({lat: latdemo, lon: londemo});
+        Geolocation.getCurrentPosition(({coords}) => {
+          const {latitude, longitude} = coords;
+          fetchLocationWeather({latitude, longitude});
+          fetchLocationForecast({latitude, longitude});
+        });
       }, 5000);
 
       setTimer(tmr);
@@ -66,7 +53,7 @@ const WeatherView = () => {
         );
       })}
       <Portal>
-        <Modal visible={temp ? false : true}>
+        <Modal dismissable={false} visible={status ? false : true}>
           <ActivityIndicator animating={true} size="large" color={'#E50914'} />
         </Modal>
       </Portal>

@@ -38,12 +38,12 @@ const setWeather = (state, payload) => {
     status = weather[0].main;
     //! Status Color
     switch (status) {
-      case 'Cloudy':
+      case 'Clouds':
         statusColor = Colors.Cloudy;
         status = 'CLOUDY';
         statusImage = require('../../../assets/sea_cloudy.png');
         break;
-      case 'Rainy':
+      case 'Rain':
         statusColor = Colors.Rainy;
         status = 'RAINY';
         statusImage = require('../../../assets/sea_rainy.png');

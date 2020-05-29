@@ -9,7 +9,7 @@
     "test": "jest",
     "lint": "eslint .",
     "pods": "cd ios && pod install",
-    "link": "react-native link react-native-vector-icons"
+    "link": "react-native link react-native-vector-icons && react-native link @react-native-community/geolocation"
   },
   "dependencies": {
     "@react-native-community/async-storage": "^1.11.0",
